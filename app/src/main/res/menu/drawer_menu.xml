@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_matches"
+            android:title="ጨዋታዎች" />
+        <item
+            android:id="@+id/nav_tables"
+            android:title="የደረጃ ሰንጠረዦች" />
+        <item
+            android:id="@+id/nav_stats"
+            android:title="ስታትስቲክስ" />
+        <item
+            android:id="@+id/nav_manage"
+            android:title="መቼት" />
+        <item
+            android:id="@+id/nav_about"
+            android:title="የ እርሶ ክለብ" />
+    </group>
+
+</menu>
