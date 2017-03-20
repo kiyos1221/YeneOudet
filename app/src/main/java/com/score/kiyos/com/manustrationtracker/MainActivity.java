@@ -1,11 +1,13 @@
 package com.score.kiyos.com.manustrationtracker;
 
+import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+
+import com.score.kiyos.com.manustrationtracker.fragment.EtDatePickerDialog;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,15 +22,17 @@ public class MainActivity extends AppCompatActivity {
         hamIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(drawerLayout.isDrawerOpen(GravityCompat.START)){
+               /* if(drawerLayout.isDrawerOpen(GravityCompat.START)){
                     drawerLayout.closeDrawers();
                 }
                 else{
                     drawerLayout.openDrawer(GravityCompat.START);
-                }
+                }*/
+
+                EtDatePickerDialog datePickerDialog = new EtDatePickerDialog();
+                datePickerDialog.show(getSupportFragmentManager(), "Hi");
             }
         });
-
 
     }
 }
