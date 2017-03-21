@@ -79,8 +79,8 @@ public class RealmPeriodController {
     }
 
     //find all objects in the Bookmark.class
-    public RealmResults<PeriodDate> getPeriodDate() {
-        return realm.where (PeriodDate.class).findAll ();
+    public PeriodDate getPeriodDate() {
+        return realm.where (PeriodDate.class).findFirst ();
     }
 
     public void addPeriodDate(final PeriodDate periodDate){

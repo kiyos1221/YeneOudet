@@ -1,6 +1,7 @@
 package com.score.kiyos.com.manustrationtracker.model;
 
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by Kiyos on 3/20/2017.
@@ -8,6 +9,8 @@ import io.realm.RealmObject;
 
 public class PeriodDate extends RealmObject {
 
+    @PrimaryKey
+    int id;
     int dayOfMonth;
     int monthOfYear;
     int year;
@@ -20,6 +23,14 @@ public class PeriodDate extends RealmObject {
 
     public void setDayOfMonth(int dayOfMonth) {
         this.dayOfMonth = dayOfMonth;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getMonthOfYear() {

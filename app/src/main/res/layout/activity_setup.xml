@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:text="ያለፈው ቀን የወር አበባሽ መቼ ነበር የጀመረው ?"
+            android:text="ያለፈው ጊዜ የወር አበባሽ መቼ ነበር የጀመረው ?"
             android:textAlignment="center"
             android:textColor="@android:color/white"
             android:textSize="20sp" />
@@ -31,7 +31,7 @@
         <Button
             android:id="@+id/set_date_btn"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_below="@+id/when_last"
             android:layout_marginTop="25dp"
             android:background="@drawable/button_bg"
@@ -43,7 +43,7 @@
             android:paddingTop="12dp"
             android:textAlignment="viewStart"
             android:textColor="@android:color/white"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/for_long"
@@ -59,7 +59,7 @@
         <com.shawnlin.numberpicker.NumberPicker
             android:id="@+id/picker_for_long"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_below="@id/for_long"
             android:layout_marginTop="25dp"
             android:background="@drawable/button_bg"
@@ -82,7 +82,7 @@
 
         <com.shawnlin.numberpicker.NumberPicker
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_below="@id/cycle_in"
             android:id="@+id/picker_for_cycle"
             android:layout_marginTop="25dp"
@@ -95,6 +95,7 @@
 
 
         <Button
+            android:id="@+id/finish_setup"
             android:layout_width="match_parent"
             android:layout_marginTop="15dp"
             android:text="ቀጥል"

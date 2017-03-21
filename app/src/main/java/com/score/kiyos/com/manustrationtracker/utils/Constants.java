@@ -45,5 +45,7 @@ public class Constants {
 
     public static final String DAYS[] = {"ሰኞ", "ማክሰኞ", "ረቡዕ", "ሐሙስ", "አርብ", "ቅዳሜ", "እሑድ"};
 
+    public static final String DAYS_SHORT[] = {"ሰኞ", "ማክ", "ረቡ", "ሐሙ", "አር", "ቅዳ", "እሑ"};
+
 
 }

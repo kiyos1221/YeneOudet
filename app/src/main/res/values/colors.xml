@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
     <color name="gradientStartColor">#ff69b4</color>
     <color name="gradientEndColor">#551a8b</color>
+    <color name="viewPagerBg">#50551a8b</color>
 </resources>

@@ -2,6 +2,7 @@ package com.score.kiyos.com.manustrationtracker.utils;
 
 import org.joda.time.Chronology;
 import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
 import org.joda.time.chrono.EthiopicChronology;
 
 /**
@@ -10,19 +11,19 @@ import org.joda.time.chrono.EthiopicChronology;
 
 public class DateUtils {
 
-    private static DateTime dateTime;
-
     private static Chronology chronology = EthiopicChronology.getInstance();
 
     private static DateTime getToday() {
 
-        dateTime = new DateTime(chronology);
-
-        return dateTime;
+        return new DateTime(chronology);
     }
 
     public static int getDate() {
         return getToday().getDayOfMonth();
+    }
+
+    public static int getDay() {
+        return getToday().getDayOfWeek();
     }
 
     public static int getMonth() {
@@ -34,10 +35,19 @@ public class DateUtils {
     }
 
     public static String getMonthName() {
-        return Constants.MONTHS[getToday().getMonthOfYear()-1];
+        return Constants.MONTHS[getToday().getMonthOfYear() - 1];
     }
 
-    public static String getMonthName(int monthOfYear){
+    public static String getMonthName(int monthOfYear) {
         return Constants.MONTHS[monthOfYear];
+    }
+
+    public static int getFirstDayOfMonth(int i) {
+        LocalDate monthBegin = new LocalDate(chronology).plusMonths(i).withDayOfMonth(1);
+        return monthBegin.getDayOfWeek();
+    }
+
+    public static String getDayName() {
+        return Constants.DAYS[getToday().getDayOfWeek() - 1];
     }
 }
