@@ -1,5 +1,12 @@
 package com.score.kiyos.com.manustrationtracker.utils;
 
+import android.content.Context;
+import android.support.v4.app.Fragment;
+import android.util.Log;
+
+import com.score.kiyos.com.manustrationtracker.database.RealmPeriodController;
+import com.score.kiyos.com.manustrationtracker.model.PeriodDate;
+
 import org.joda.time.Chronology;
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
@@ -46,8 +53,39 @@ public class DateUtils {
         LocalDate monthBegin = new LocalDate(chronology).plusMonths(i).withDayOfMonth(1);
         return monthBegin.getDayOfWeek();
     }
+    public static int getMonthInPosition(int i) {
+        LocalDate monthBegin = new LocalDate(chronology).plusMonths(i).withDayOfMonth(1);
+        return monthBegin.getMonthOfYear();
+    }
 
     public static String getDayName() {
         return Constants.DAYS[getToday().getDayOfWeek() - 1];
     }
+
+    public static LocalDate addDay(int numberOfDays){
+        return new LocalDate(chronology).plusDays(numberOfDays);
+    }
+
+    public static String addMonth(int num){
+        LocalDate localDate = new LocalDate(chronology).plusMonths(num);
+        int year = localDate.getYear();
+        int month = localDate.getMonthOfYear();
+        return Constants.MONTHS[month-1] +" "+ year;
+    }
+    public static String subtractMonth(int num){
+        LocalDate localDate = new LocalDate(chronology).minusMonths(num);
+        int year = localDate.getYear();
+        int month = localDate.getMonthOfYear();
+        return Constants.MONTHS[month-1] +" "+ year;
+    }
+
+    public static int getNextMenstration(Context fragment, int month){
+
+        PeriodDate periodDate = RealmPeriodController.with(fragment).getPeriodDate();
+
+        return new LocalDate(chronology).withDayOfMonth(periodDate.getDayOfMonth()).withMonthOfYear(periodDate.getMonthOfYear()).withYear(periodDate.getYear()).plusDays(periodDate.getCycleDuration()*month).getDayOfMonth();
+
+    }
+
+
 }

@@ -7,11 +7,15 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.score.kiyos.com.manustrationtracker.R;
 import com.score.kiyos.com.manustrationtracker.adapter.CalendarPagerAdapter;
+import com.score.kiyos.com.manustrationtracker.adapter.TimelineAdapter;
 import com.score.kiyos.com.manustrationtracker.utils.DateUtils;
 
 /**
@@ -19,6 +23,8 @@ import com.score.kiyos.com.manustrationtracker.utils.DateUtils;
  */
 public class Calendar extends Fragment {
 
+
+    int i = 0;
 
     public Calendar() {
         // Required empty public constructor
@@ -29,7 +35,7 @@ public class Calendar extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        final View view = inflater.inflate(R.layout.fragment_menstration, container, false);
+        final View view = inflater.inflate(R.layout.fragment_calendar, container, false);
 
         ImageView prev = (ImageView) view.findViewById(R.id.id_prev);
 
@@ -38,6 +44,8 @@ public class Calendar extends Fragment {
         final TextView month_year = (TextView) view.findViewById(R.id.month_year_txt);
 
         final ViewPager viewPager = (ViewPager) view.findViewById(R.id.calendar_pager);
+
+        view.findViewById(R.id.date_wrapper).bringToFront();
 
         viewPager.setAdapter(new CalendarPagerAdapter());
 
@@ -51,23 +59,16 @@ public class Calendar extends Fragment {
             @Override
             public void onClick(View v) {
                 viewPager.setCurrentItem(viewPager.getCurrentItem() - 1);
-                month_year.setText(DateUtils.getMonthName(DateUtils.getMonth() - 1) + " " + DateUtils.getYear());
+
+                month_year.setText(DateUtils.subtractMonth(viewPager.getCurrentItem()));
             }
         });
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int month_index = DateUtils.getMonth() + viewPager.getCurrentItem() - 1;
-                int year = DateUtils.getYear();
-
                 viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
 
-                if (month_index > 12) {
-                    month_index = 0;
-                    year += 1;
-                }
-
-                month_year.setText(DateUtils.getMonthName(month_index) + " " + year);
+                month_year.setText(DateUtils.addMonth(viewPager.getCurrentItem()));
             }
         });
 
@@ -87,6 +88,10 @@ public class Calendar extends Fragment {
 
             }
         });
+
+        ListView listView = (ListView) view.findViewById(R.id.timeline_list);
+
+        listView.setAdapter(new TimelineAdapter());
 
         return view;
     }

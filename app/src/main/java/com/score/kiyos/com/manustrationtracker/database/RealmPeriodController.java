@@ -2,6 +2,7 @@ package com.score.kiyos.com.manustrationtracker.database;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.Context;
 import android.support.v4.app.Fragment;
 
 import com.score.kiyos.com.manustrationtracker.model.PeriodDate;
@@ -18,7 +19,7 @@ public class RealmPeriodController {
     private static RealmPeriodController instance;
     private final Realm realm;
 
-    public RealmPeriodController(Application application) {
+    public RealmPeriodController(Context application) {
         Realm.init (application);
         RealmConfiguration libraryConfig = new RealmConfiguration.Builder ()
                 .name ("app.realm")
@@ -33,6 +34,15 @@ public class RealmPeriodController {
         if (instance == null) {
             Realm.init (fragment.getActivity ());
             instance = new RealmPeriodController (fragment.getActivity ().getApplication ());
+        }
+        return instance;
+
+    }
+    public static RealmPeriodController with(Context context) {
+
+        if (instance == null) {
+            Realm.init (context);
+            instance = new RealmPeriodController (context);
         }
         return instance;
 

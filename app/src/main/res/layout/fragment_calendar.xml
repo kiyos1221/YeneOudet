@@ -1,23 +1,16 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.score.kiyos.com.manustrationtracker.fragment.Calendar">
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="ዛሬ"
-        android:layout_below="@+id/calendar_pager"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/button_bg"/>
-
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:paddingTop="10dp"
+        android:clickable="true"
+        android:id="@+id/date_wrapper"
         android:background="@color/viewPagerBg"
         android:layout_alignParentTop="true">
 
@@ -26,10 +19,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
+            android:clickable="true"
             android:layout_alignParentLeft="true"
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="15dp"
-            android:src="@drawable/ic_back" />
+            app:srcCompat="@drawable/ic_back" />
 
         <TextView
             android:id="@+id/month_year_txt"
@@ -48,22 +42,40 @@
             android:id="@+id/id_next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:clickable="true"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:layout_marginBottom="10dp"
             android:layout_marginRight="15dp"
-            android:src="@drawable/ic_next" />
+            app:srcCompat="@drawable/ic_next" />
 
     </RelativeLayout>
 
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:useCompatPadding="true"
+        app:layout_anchor="@+id/calendar_pager"
+        app:layout_anchorGravity="bottom|end"
+        app:backgroundTint="@color/gradientEndColor"
+        app:srcCompat="@drawable/ic_add" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/calendar_pager"
         android:layout_width="wrap_content"
         android:layout_height="240dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerInParent="true"
         android:paddingTop="10dp"
-        android:background="@color/viewPagerBg" />
+        android:background="@color/viewPagerBg"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
-</RelativeLayout>
+    <ListView
+        android:id="@+id/timeline_list"
+        android:layout_marginTop="250dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</android.support.design.widget.CoordinatorLayout>
