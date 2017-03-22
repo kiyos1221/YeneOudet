@@ -47,6 +47,7 @@ public class CalendarAdapter extends BaseAdapter{
 
         if(position < 7){
             day.setText(Constants.DAYS_SHORT[position]);
+            day.setTextColor(ContextCompat.getColor(parent.getContext(), android.R.color.darker_gray));
         }
 
         if(position - 6 >= month){

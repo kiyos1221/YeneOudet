@@ -4,6 +4,15 @@
     android:layout_height="match_parent"
     tools:context="com.score.kiyos.com.manustrationtracker.fragment.Ovulation">
 
+
+    <ProgressBar
+        style="?android:attr/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:progress="25"
+        android:secondaryProgress="2" />
+
     <RelativeLayout
         android:layout_width="200dp"
         android:layout_height="200dp"
@@ -15,27 +24,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:text="10"
             android:textColor="@android:color/white"
-            android:textSize="45sp"
-            android:text="10"/>
+            android:textSize="45sp" />
 
         <TextView
             android:layout_width="150dp"
-            android:layout_marginTop="5dp"
-            android:layout_centerHorizontal="true"
             android:layout_height="wrap_content"
             android:layout_below="@id/days_left"
-            android:textColor="@android:color/white"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:text="ቀን እስከ "
             android:textAlignment="center"
-            android:text="ቀን እስከ "/>
+            android:textColor="@android:color/white" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ቀጣይ እንቁላል የሚፈጠረው"
-            android:textColor="@android:color/white"
+            android:layout_above="@+id/days_left"
             android:layout_centerHorizontal="true"
-            android:layout_above="@+id/days_left" />
+            android:text="ቀጣይ እንቁላል የሚፈጠረው"
+            android:textColor="@android:color/white" />
 
     </RelativeLayout>
 

@@ -42,22 +42,11 @@
             android:layout_height="wrap_content"/>
 
         <android.support.v4.view.ViewPager
+            android:layout_below="@+id/tab_layout"
             android:id="@+id/view_pager_main"
             android:background="@android:color/transparent"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:text="zare qen"
-            android:id="@+id/today"
-            android:textAlignment="center"
-            android:background="#20000000"
-            android:padding="10dp"
-            android:textSize="18sp"
-            android:textColor="@android:color/white"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true"
-            android:layout_height="wrap_content" />
 
     </RelativeLayout>
 
@@ -65,7 +54,6 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@color/gradientEndColor"
         app:headerLayout="@layout/drawer_header_layout"
         app:menu="@menu/drawer_menu" />
 </android.support.v4.widget.DrawerLayout>

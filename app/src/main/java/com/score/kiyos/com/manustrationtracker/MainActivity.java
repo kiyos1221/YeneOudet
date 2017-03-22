@@ -11,8 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.score.kiyos.com.manustrationtracker.adapter.MainActivityPagerAdapter;
-import com.score.kiyos.com.manustrationtracker.database.RealmPeriodController;
-import com.score.kiyos.com.manustrationtracker.model.PeriodDate;
 import com.score.kiyos.com.manustrationtracker.utils.DateUtils;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,21 +25,17 @@ public class MainActivity extends AppCompatActivity {
 
         final DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
-       ImageView hamIcon = (ImageView) findViewById(R.id.ham_icon);
-
-        TextView today = (TextView) findViewById(R.id.today);
+        ImageView hamIcon = (ImageView) findViewById(R.id.ham_icon);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
 
         tabLayout.bringToFront();
 
-        ViewPager viewPager  = (ViewPager) findViewById(R.id.view_pager_main);
+        ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager_main);
 
         viewPager.setAdapter(new MainActivityPagerAdapter(getSupportFragmentManager()));
 
         tabLayout.setupWithViewPager(viewPager);
-
-        today.setText("ዛሬ ቀን " + DateUtils.getMonthName() + " " + DateUtils.getDate() + ", " + DateUtils.getYear());
 
         hamIcon.setOnClickListener(new View.OnClickListener() {
             @Override

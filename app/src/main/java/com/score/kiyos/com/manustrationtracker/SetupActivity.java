@@ -21,6 +21,10 @@ public class SetupActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        if(RealmPeriodController.with(this).getPeriodDate()!=null){
+            startActivity(new Intent(this, MainActivity.class));
+        }
+
         setContentView(R.layout.activity_setup);
 
         setDateButton = (Button) findViewById(R.id.set_date_btn);
