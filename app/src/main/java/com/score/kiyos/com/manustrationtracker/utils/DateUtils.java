@@ -74,6 +74,18 @@ public class DateUtils {
         return localDate.dayOfMonth().getMaximumValue();
     }
 
+    public static int getDaysLeftForTheNext(Context context){
+        PeriodDate periodDate = RealmPeriodController.with(context).getPeriodDate();
+
+        DateTime dateTime = new DateTime(chronology).withDayOfMonth(periodDate.getDayOfMonth()).withMonthOfYear(periodDate.getMonthOfYear()).withYear(periodDate.getYear()).plusDays(periodDate.getCycleDuration() * month);
+
+        int monthsInBetween = getToday().plusMonths(1).getMonthOfYear() - dateTime.getMonthOfYear();
+
+        Log.d("Months In Between", String.valueOf(monthsInBetween));
+
+        return Math.abs(Days.daysBetween(DateUtils.getToday().plusMonths(1), dateTime).getDays()) - (monthsInBetween*periodDate.getCycleDuration());
+    }
+
 
     @NonNull
     public static DateTime getLocalDateWithGivenMonth(Context fragment, int month) {

@@ -38,9 +38,11 @@ public class Ovulation extends Fragment {
 
         PeriodDate periodDate = RealmPeriodController.with(getActivity()).getPeriodDate();
 
-        int daysLeftForManustration = (DateUtils.getDate() - periodDate.getDayOfMonth() > periodDate.getCycleDuration()) ? DateUtils.getDate() - periodDate.getDayOfMonth() / periodDate.getCycleDuration() : DateUtils.getDate() - periodDate.getDayOfMonth();
+        int daysLeftForManustration = DateUtils.getDaysLeftForTheNext(getActivity());
 
         TextView daysLeft = (TextView) view.findViewById(R.id.days_left);
+
+        daysLeft.setText(String.valueOf(daysLeftForManustration));
 
         GridView weekDates = (GridView) view.findViewById(R.id.week_dates);
 
