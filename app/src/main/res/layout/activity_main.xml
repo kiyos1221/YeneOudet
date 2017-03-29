@@ -32,22 +32,23 @@
             android:textSize="22dp"
             android:textStyle="bold" />
 
-        <android.support.design.widget.TabLayout
-
-            android:id="@+id/tab_layout"
-            android:layout_below="@+id/page_title"
-            android:layout_width="match_parent"
-            app:tabSelectedTextColor="@android:color/white"
-            app:tabTextColor="@android:color/darker_gray"
-            android:layout_height="wrap_content"/>
 
         <android.support.v4.view.ViewPager
-            android:layout_below="@+id/tab_layout"
+            android:layout_marginTop="18dp"
             android:id="@+id/view_pager_main"
-            android:background="@android:color/transparent"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:layout_below="@id/page_title"
+            android:background="@android:color/transparent" />
 
+        <android.support.design.widget.BottomNavigationView
+            android:layout_width="match_parent"
+            android:background="@color/viewPagerBg"
+            android:layout_alignParentBottom="true"
+            app:menu="@menu/bottom_nav_menu"
+            app:itemTextColor="@android:color/white"
+            app:elevation="5dp"
+            android:layout_height="wrap_content"/>
     </RelativeLayout>
 
     <android.support.design.widget.NavigationView
@@ -56,4 +57,6 @@
         android:layout_gravity="start"
         app:headerLayout="@layout/drawer_header_layout"
         app:menu="@menu/drawer_menu" />
+
+
 </android.support.v4.widget.DrawerLayout>

@@ -47,5 +47,7 @@ public class Constants {
 
     public static final String DAYS_SHORT[] = {"ሰኞ", "ማክ", "ረቡ", "ሐሙ", "አር", "ቅዳ", "እሑ"};
 
+    public  static int changedPosition = 0;
+
 
 }

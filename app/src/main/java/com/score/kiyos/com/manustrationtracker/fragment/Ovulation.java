@@ -6,11 +6,13 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.score.kiyos.com.manustrationtracker.MainActivity;
 import com.score.kiyos.com.manustrationtracker.R;
+import com.score.kiyos.com.manustrationtracker.adapter.WeekCalendarAdapter;
 import com.score.kiyos.com.manustrationtracker.database.RealmPeriodController;
 import com.score.kiyos.com.manustrationtracker.model.PeriodDate;
 import com.score.kiyos.com.manustrationtracker.utils.DateUtils;
@@ -40,7 +42,13 @@ public class Ovulation extends Fragment {
 
         TextView daysLeft = (TextView) view.findViewById(R.id.days_left);
 
+        GridView weekDates = (GridView) view.findViewById(R.id.week_dates);
+
+        weekDates.setAdapter(new WeekCalendarAdapter());
+
         return view;
     }
+
+
 
 }

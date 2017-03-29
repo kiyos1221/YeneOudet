@@ -25,6 +25,8 @@ public class SetupActivity extends AppCompatActivity{
             startActivity(new Intent(this, MainActivity.class));
         }
 
+        final PeriodDate periodDate = new PeriodDate();
+
         setContentView(R.layout.activity_setup);
 
         setDateButton = (Button) findViewById(R.id.set_date_btn);
@@ -48,14 +50,10 @@ public class SetupActivity extends AppCompatActivity{
                     @Override
                     public void onPositiveResult(int[] value) {
                         setDateButton.setText(DateUtils.getMonthName(value[1])+" "+value[0]+", "+value[2]);
-                        PeriodDate periodDate = new PeriodDate();
                         periodDate.setId(1);
                         periodDate.setDayOfMonth(value[0]);
-                        periodDate.setMonthOfYear(value[1]);
+                        periodDate.setMonthOfYear(value[1]+1);
                         periodDate.setYear(value[2]);
-                        periodDate.setCycleDuration(pickerCycleIn.getValue());
-                        periodDate.setFlowDate(pickerForLong.getValue());
-                        RealmPeriodController.with(SetupActivity.this).addPeriodDate(periodDate);
                     }
                 });
 
@@ -65,6 +63,9 @@ public class SetupActivity extends AppCompatActivity{
         finishSetup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                periodDate.setCycleDuration(pickerCycleIn.getValue());
+                periodDate.setFlowDate(pickerForLong.getValue());
+                RealmPeriodController.with(SetupActivity.this).addPeriodDate(periodDate);
                 startActivity(new Intent(SetupActivity.this, MainActivity.class));
             }
         });

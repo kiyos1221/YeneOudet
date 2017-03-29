@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">የኔ ዑደት</string>
     <string name="my_cycle">የኔ ዑደት</string>
+    <string name="my_home">ዋና</string>
+    <string name="my_calendar">ካላንደር</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

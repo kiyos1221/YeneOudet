@@ -6,12 +6,20 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.score.kiyos.com.manustrationtracker.adapter.MainActivityPagerAdapter;
+import com.score.kiyos.com.manustrationtracker.database.RealmPeriodController;
+import com.score.kiyos.com.manustrationtracker.utils.Constants;
 import com.score.kiyos.com.manustrationtracker.utils.DateUtils;
+
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeUtils;
+import org.joda.time.LocalDate;
+import org.joda.time.PeriodType;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,15 +35,14 @@ public class MainActivity extends AppCompatActivity {
 
         ImageView hamIcon = (ImageView) findViewById(R.id.ham_icon);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-
-        tabLayout.bringToFront();
-
         ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager_main);
 
-        viewPager.setAdapter(new MainActivityPagerAdapter(getSupportFragmentManager()));
+        for (int i = 0; i<90; i++){
+            DateTime localDate = DateUtils.getLocalDateWithGivenMonth(this, i);
+            Log.d("Dates", localDate.getDayOfMonth()+"/"+ Constants.MONTHS[localDate.getMonthOfYear()-1]+"/"+localDate.getYear());
+        }
 
-        tabLayout.setupWithViewPager(viewPager);
+        viewPager.setAdapter(new MainActivityPagerAdapter(getSupportFragmentManager()));
 
         hamIcon.setOnClickListener(new View.OnClickListener() {
             @Override

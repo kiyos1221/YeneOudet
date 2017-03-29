@@ -7,11 +7,9 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.score.kiyos.com.manustrationtracker.R;
 import com.score.kiyos.com.manustrationtracker.adapter.CalendarPagerAdapter;
@@ -45,24 +43,25 @@ public class Calendar extends Fragment {
 
         final ViewPager viewPager = (ViewPager) view.findViewById(R.id.calendar_pager);
 
+        final ListView listView = (ListView) view.findViewById(R.id.timeline_list);
+
+        setAdaperForList(listView, viewPager.getCurrentItem());
+
         view.findViewById(R.id.date_wrapper).bringToFront();
 
         viewPager.setAdapter(new CalendarPagerAdapter());
 
         month_year.setText(DateUtils.getMonthName() + " " + DateUtils.getYear());
 
-        next.bringToFront();
-
-        prev.bringToFront();
-
         prev.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 viewPager.setCurrentItem(viewPager.getCurrentItem() - 1);
 
-                month_year.setText(DateUtils.subtractMonth(viewPager.getCurrentItem()));
+                month_year.setText(DateUtils.addMonth(viewPager.getCurrentItem()));
             }
         });
+
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,7 +79,8 @@ public class Calendar extends Fragment {
 
             @Override
             public void onPageSelected(int position) {
-
+                month_year.setText(DateUtils.addMonth(viewPager.getCurrentItem()));
+                setAdaperForList(listView, position);
             }
 
             @Override
@@ -89,11 +89,13 @@ public class Calendar extends Fragment {
             }
         });
 
-        ListView listView = (ListView) view.findViewById(R.id.timeline_list);
-
-        listView.setAdapter(new TimelineAdapter());
 
         return view;
     }
+
+    public void setAdaperForList(ListView listView, int position) {
+        listView.setAdapter(new TimelineAdapter(position));
+    }
+
 
 }

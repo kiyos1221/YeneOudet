@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.GridView;
 
 import com.score.kiyos.com.manustrationtracker.R;
+import com.score.kiyos.com.manustrationtracker.utils.DateUtils;
 
 /**
  * Created by Kiyos on 3/21/2017.
@@ -28,7 +29,7 @@ public class CalendarPagerAdapter extends PagerAdapter {
         View view = LayoutInflater.from(container.getContext()).inflate(R.layout.calendar_view, container, false);
         GridView gridView = (GridView) view.findViewById(R.id.calendar_grid);
 
-        gridView.setAdapter(new CalendarAdapter(position));
+        gridView.setAdapter(new CalendarAdapter(container.getContext(), position));
 
         container.addView(gridView);
 
